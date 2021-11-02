@@ -49,6 +49,11 @@ spec:
             - name: certs
               mountPath: /tls
               readOnly: true
+          securityContext:
+            privileged: true
+            capabilities:
+              add: ["SYS_ADMIN"]
+            allowPrivilegeEscalation: true
           resources:
 {{ toYaml .Values.resources | indent 12 }}
       volumes:
